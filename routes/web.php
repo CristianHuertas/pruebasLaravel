@@ -20,12 +20,17 @@ route::get('/', 'App\Http\Controllers\PagesController@inicio')->name('inicio');;
 route::get('/detalle/{id}', 'App\Http\Controllers\PagesController@detalle')->name('notas.detalle');;
 
 //metodo para crear datos
-route::post('/', 'App\Http\Controllers\PagesController@crear')->name('notas.crear');
+route::post('/crear/', 'App\Http\Controllers\PagesController@crear')->name('notas.crear');
 
 //metodo para consulta el dato para luego editarlo
 route::get('/editar/{id}', 'App\Http\Controllers\PagesController@editar')->name('notas.editar');
 
+// metodo para editar lo consultado
 route::put('/editar/{id}', 'App\Http\Controllers\PagesController@update')->name('notas.update');
+
+
+route::delete('/eliminar/{id}', 'App\Http\Controllers\PagesController@eliminar')->name('notas.eliminar');
+
 
 
 

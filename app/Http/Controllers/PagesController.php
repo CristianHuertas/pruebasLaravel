@@ -7,9 +7,10 @@ use App;
 
 class PagesController extends Controller
 {
+    
     public function inicio()
     {
-        $notas = App\Models\Nota::all();
+        $notas = App\Models\Nota::Paginate(3);
         return view('welcome', compact('notas'));
     }
 
@@ -55,6 +56,14 @@ class PagesController extends Controller
 
         //back devuelve a la vista anterior
         return back()->with('mensaje', 'Nota actualizada');
+    }
+
+    //Eliminar un id consultado
+    public function eliminar ($id){
+        $notaEliminar = App\Models\Nota::findOrFail($id);
+        $notaEliminar->delete();
+        return back()->with('mensaje', 'Nota eliminada');
+
     }
 
     public function fotos()
